@@ -23,6 +23,7 @@ freely, subject to the following restrictions:
 */
 
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "soloud.h"
 #include "soloud_speech.h"
@@ -39,7 +40,11 @@ int main(int argc, char *argv[])
 	speech.setText("1 2 3   1 2 3   Hello world. Welcome to So-Loud.");
 
 	// initialize SoLoud.
-	soloud.init();
+	if(soloud.init() < 0)
+	{
+        fprintf(stderr, "Error\n");
+        return EXIT_FAILURE;
+	}
 
 	// Play the sound source (we could do this several times if we wanted)
 	soloud.play(speech);
@@ -55,5 +60,5 @@ int main(int argc, char *argv[])
 	soloud.deinit();
 
 	// All done.
-	return 0;
+	return EXIT_SUCCESS;
 }
