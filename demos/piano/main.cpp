@@ -66,7 +66,7 @@ float gRelease = 0.5f;
 plonked gPlonked[128] = { 0 };
 int gWaveSelect = 2;
 int gEcho = 0;
-char *gInfo = "";
+const char *gInfo = "";
 
 SDL_Surface *screen;
 SDL_Surface *font;
@@ -101,7 +101,7 @@ int drawchar(int ch, int x, int y)
 	return maxx + 1;
 }
 
-void drawstring(char * s, int x, int y)
+void drawstring(const char * s, int x, int y)
 {
 	while (*s)
 	{
@@ -224,7 +224,7 @@ void unplonk(float rel)
 	gPlonked[i].mHandle = 0;
 }
 
-void say(char *text)
+void say(const char *text)
 {
 	gInfo = text;
 	gSpeech.setText(text);
