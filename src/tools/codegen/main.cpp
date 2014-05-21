@@ -32,6 +32,10 @@ freely, subject to the following restrictions:
 
 #define OUTDIR "../src/c_api/"
 
+#ifdef _WIN32
+#define strcasecmp _stricmp
+#endif
+
 using namespace std;
 
 struct Method
@@ -994,7 +998,7 @@ int main(int parc, char ** pars)
 {
 	printf(VERSION "\n");
 	
-	if (parc < 2 || _stricmp(pars[1], "go") != 0)
+	if (parc < 2 || strcasecmp(pars[1], "go") != 0)
 	{
 		printf("\nThis program will generate the 'C' api wrapper code.\n"
 			   "You probably ran this by mistake.\n"
